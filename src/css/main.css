@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  #canvas {
+    @apply absolute inset-0 w-full h-full p-4 object-contain;
+  }
+  .image-selector {
+    @apply text-sm z-10 w-full h-full p-4 rounded-lg flex justify-center items-center;
+  }
+  .image-wrapper {
+    @apply border rounded-lg bg-stone-600/20 h-full max-w-screen-lg w-full mx-auto transition-all duration-500 ease-in-out;
+  }
+  #image-file-input {
+    @apply hidden;
+  }
+  #image-file-label {
+    @apply cursor-pointer text-2xl flex flex-col items-center justify-center gap-6 h-full;
+  }
+  .feather-image {
+    @apply stroke-stone-50 w-20 h-20 stroke-1;
+  }
+  .config-container {
+    @apply p-4;
+  }
+  .config-wrapper {
+    @apply flex flex-wrap max-w-screen-lg mx-auto border gap-6 border-stone-50 rounded-lg p-2;
+  }
+  .toolbar {
+    @apply flex flex-col flex-1;
+  }
+  .toolbar-item {
+    @apply flex justify-between max-w-xs;
+  }
+  .toolbar-label {
+  }
+  .toolbar-input {
+    @apply flex-1;
+  }
+  .download {
+    @apply flex flex-col gap-4 my-4 justify-center items-center flex-1 basis-full md:basis-0;
+  }
+  #download-link {
+    @apply cursor-pointer py-1 px-3 rounded bg-stone-50 text-stone-900 hover:bg-stone-900 hover:text-stone-50 hover:border-stone-50 border-transparent border transition-all duration-500;
+  }
+}

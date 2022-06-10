@@ -1,0 +1,34 @@
+{
+  "name": "image-editor",
+  "version": "1.0.0",
+  "description": "Amagi JS Task - Image Editor.",
+  "scripts": {
+    "watch-css": "postcss src/css/main.css -o assets/css/style.css -w",
+    "build-css": "cross-env ENV_BUILD=prod postcss src/css/main.css -o assets/css/style.css",
+    "watch-js": "esbuild src/js/main.js --bundle --sourcemap=inline --target=es2016 --outfile=assets/js/main.js --watch",
+    "debug-js": "esbuild src/js/main.js --bundle --minify --sourcemap --target=es2016 --outfile=assets/js/main.js --servedir=./",
+    "build-js": "esbuild src/js/main.js --bundle --minify --target=es2016 --outfile=assets/js/main.js",
+    "start": "concurrently \"npm:watch-css\" \"npm:watch-js\"",
+    "dev": "concurrently \"npm:watch-css\" \"npm:debug-js\"",
+    "copy": "copyfiles index.html \"assets/**/*\" dist",
+    "deploy": "npm run build-css && npm run build-js && npm run copy"
+  },
+  "author": "Sharif Hayudini",
+  "license": "ISC",
+  "dependencies": {
+    "tailwindcss": "^3.1.1"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.7",
+    "concurrently": "^7.2.1",
+    "copyfiles": "^2.4.1",
+    "cross-env": "^7.0.3",
+    "esbuild": "^0.14.43",
+    "postcss": "^8.4.14",
+    "postcss-cli": "^9.1.0",
+    "postcss-copy": "^7.1.0",
+    "postcss-import": "^14.1.0",
+    "prettier": "^2.6.2",
+    "prettier-plugin-tailwindcss": "^0.1.11"
+  }
+}
