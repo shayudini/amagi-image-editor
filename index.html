@@ -16,19 +16,42 @@
     />
     <link rel="stylesheet" href="./assets/css/style.css" />
     <script src="./assets/js/main.js" defer></script>
+    <script>
+      // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+      if (
+        localStorage.theme === 'dark' ||
+        (!('theme' in localStorage) &&
+          window.matchMedia('(prefers-color-scheme: dark)').matches)
+      ) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+
+      // Whenever the user explicitly chooses light mode
+      localStorage.theme = 'light';
+
+      // Whenever the user explicitly chooses dark mode
+      localStorage.theme = 'dark';
+
+      // Whenever the user explicitly chooses to respect the OS preference
+      localStorage.removeItem('theme');
+    </script>
     <title>Amagi JS Task - Image Editor</title>
   </head>
 
-  <body class="bg-stone-900 text-stone-50">
+  <body class="bg-stone-50 text-stone-900 dark:bg-stone-900 dark:text-stone-50">
     <div class="h-screen w-full flex flex-col app">
-      <header class="p-4 bg-stone-800">
+      <header class="p-4 bg-stone-200 dark:bg-stone-800 flex items-center">
         <h1>
           <span>
-            <a href="https://amagi.io" target="_blank">Amagi</a> |
-            <a href="#">Image Editor</a>
-            <code> 1.0.0</code>
+            <a href="https://amagi.io" target="_blank">Amagi</a
+            ><span class="text-stone-50 dark:text-stone-50/40 text-xl"> |</span>
+            <a href="#" class="text-sm">Image Editor</a>
+            <code class="text-sm"> 1.0.0</code>
           </span>
         </h1>
+        <button class="ml-auto" id="dark-mode">Mode</button>
       </header>
       <div class="flex justify-center items-center h-full lg:h-[80vh] relative">
         <canvas id="canvas"></canvas>
@@ -148,13 +171,15 @@
             </div>
           </div>
           <div class="download">
-            <div class="uppercase">
-              <a id="download-link">Download</a>
-              <span
-                id="reset"
-                class="ml-8 border leading-none py-1 px-3 rounded hover:bg-stone-300 hover:text-stone-700 transition-all duration-500"
-                >Reset</span
-              >
+            <div class="uppercase text-xs flex justify-center items-start">
+              <div class="flex flex-col h-full gap-4">
+                <a id="load-image" class="button button-invert">Load New</a>
+                <a id="download-link" class="button">Download</a>
+              </div>
+              <div class="flex flex-col h-full gap-4">
+                <a id="reset" class="ml-8 button">Reset</a>
+                <a id="discard" class="ml-8 button">Discard</a>
+              </div>
             </div>
           </div>
         </div>

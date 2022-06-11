@@ -21,6 +21,9 @@
   .feather-image {
     @apply stroke-stone-50 w-20 h-20 stroke-1;
   }
+  .feather-moon {
+    @apply stroke-stone-50 w-20 h-20 stroke-1;
+  }
   .config-container {
     @apply p-4;
   }
@@ -41,7 +44,10 @@
   .download {
     @apply flex flex-col gap-4 my-4 justify-center items-center flex-1 basis-full md:basis-0;
   }
-  #download-link {
-    @apply cursor-pointer py-1 px-3 rounded bg-stone-50 text-stone-900 hover:bg-stone-900 hover:text-stone-50 hover:border-stone-50 border-transparent border transition-all duration-500;
+  .button {
+    @apply cursor-pointer py-1 px-3 rounded bg-stone-900 text-stone-50 hover:bg-stone-50 hover:text-stone-900 hover:border-stone-900 dark:bg-stone-50 dark:text-stone-900 dark:hover:bg-stone-900 dark:hover:text-stone-50 dark:hover:border-stone-50 border-transparent border transition-all duration-500;
+  }
+  .button-invert {
+    @apply bg-stone-50 text-stone-900 hover:bg-stone-900 hover:text-stone-50 hover:border-stone-900 border-stone-900 dark:bg-stone-900 dark:text-stone-50 dark:hover:bg-stone-50 dark:hover:text-stone-900 dark:hover:border-stone-50 dark:border-stone-50 border transition-all duration-500;
   }
 }
